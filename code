@@ -1,0 +1,28 @@
+const int led = 9;
+const int sensor = 8;
+const int buzzer = 10;
+bool sensor_value ;
+bool state = false ;
+void setup()
+{
+pinMode(led,OUTPUT);
+pinMode(buzzer,OUTPUT);
+pinMode(sensor,INPUT);
+}
+void loop()
+{
+ sensor_value = digitalRead(sensor);
+  if(sensor_value == true){
+    state = true;
+  }
+  if(state == true){
+    digitalWrite(led,HIGH);
+    tone(buzzer,1000);
+    delay(500);
+    digitalWrite(led,LOW);
+    noTone(buzzer);
+    delay(500);
+  }
+  else
+    digitalWrite(led,LOW);
+}
